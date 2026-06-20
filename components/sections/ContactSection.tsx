@@ -51,7 +51,12 @@ export default function ContactSection() {
     if (!formState.name || !formState.email || !formState.message) return;
     setSending(true);
     // ── Wire up your preferred form service here (e.g. Formspree, EmailJS) ──
-    await new Promise((r) => setTimeout(r, 1000));
+    const res = await fetch("https://formspree.io/f/xqevzzqq", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(formState),
+});
+if (!res.ok) throw new Error("Failed");
     setSending(false);
     setSubmitted(true);
     setFormState({ name: "", email: "", message: "" });
