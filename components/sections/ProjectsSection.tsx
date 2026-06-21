@@ -12,31 +12,46 @@ interface Project {
   gradient: string;
   emoji:    string;
   tag:      string;
+  label:    string;
   url:      string;
 }
 
 const projects: Project[] = [
   {
-    title:    "The GOAT Restaurant",
+    title:   "The GOAT Restaurant",
     context:
       "A premium fine-dining restaurant in Chennai needed a website that matched its luxury positioning — Michelin-style cuisine, cinematic ambience, and a 4.9-star reputation across 2,500+ reviews.",
     result:
       "Built a cinematic multi-section site with table reservations, a full interactive menu, signature dish showcases, and award/recognition highlights — designed to feel as premium as the dining experience itself.",
     gradient: "from-[#2a1408] via-[#1a0f08] to-[#0a0a0a]",
     emoji:    "🍽️",
-    tag:      "Fine dining website",
+    tag:      "Client project",
+    label:    "Fine dining website",
     url:      "https://the-goat-restaurant.vercel.app",
   },
   {
-    title:    "Tea Brown Cafe",
+    title:   "Tea Brown Cafe",
     context:
       "Salem's own tea destination needed an online presence to drive WhatsApp orders — from ₹15 masala tea to filter coffee and milkshakes — and showcase its cosy, affordable cafe vibe.",
     result:
       "Delivered a warm, inviting multi-page site with a live menu, weekly bestsellers, customer reviews, and one-tap WhatsApp ordering on every dish — built to convert browsers into walk-ins.",
     gradient: "from-[#2a1b0a] via-[#1f1410] to-[#0a0a0a]",
     emoji:    "🍵",
-    tag:      "Cafe & tea shop website",
+    tag:      "Client project",
+    label:    "Cafe & tea shop website",
     url:      "https://tea-brown-cafe.netlify.app",
+  },
+  {
+    title:   "Crown & Caliber Watch Showroom",
+    context:
+      "A sample template built to demonstrate the Popular Package (₹5,000) — showing how a single-page business site with WhatsApp integration looks for a luxury retail brand.",
+    result:
+      "Single-page site featuring collections, featured products, brand gallery, testimonials, appointment booking, WhatsApp enquiry button, and Google Maps — everything a showroom needs, in one page.",
+    gradient: "from-[#1a1500] via-[#111008] to-[#0a0a0a]",
+    emoji:    "⌚",
+    tag:      "Sample template",
+    label:    "Watch showroom · Popular Package",
+    url:      "https://watch-showroom-sample.netlify.app/",
   },
 ];
 
@@ -49,13 +64,21 @@ export default function ProjectsSection() {
 
     const ctx = gsap.context(() => {
       gsap.from(".proj-header", {
-        scrollTrigger: { trigger: ".proj-header", start: "top 85%", toggleActions: "play none none none" },
+        scrollTrigger: {
+          trigger: ".proj-header",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
         opacity: 0, y: 30, duration: 0.8, ease: "power3.out",
       });
 
       gsap.from(".proj-card", {
-        scrollTrigger: { trigger: ".proj-grid", start: "top 75%", toggleActions: "play none none none" },
-        opacity: 0, y: 55, stagger: 0.18, duration: 0.9, ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".proj-grid",
+          start: "top 75%",
+          toggleActions: "play none none none",
+        },
+        opacity: 0, y: 55, stagger: 0.16, duration: 0.9, ease: "power2.out",
       });
     }, sectionRef);
 
@@ -81,14 +104,14 @@ export default function ProjectsSection() {
             Projects I&apos;ve{" "}
             <span className="text-gradient-aurora">built</span>
           </h2>
-          <p className="font-body text-muted text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
-            Real client websites, live and working — click any project to see
-            it in action.
+          <p className="font-body text-muted text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+            Real client websites and live samples — click any project to see it
+            in action.
           </p>
         </div>
 
-        {/* Cards — 2 columns, centred */}
-        <div className="proj-grid grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* Cards — 1 col → 2 col → 3 col */}
+        <div className="proj-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((proj) => (
             <ProjectCard key={proj.title} project={proj} />
           ))}
@@ -99,6 +122,8 @@ export default function ProjectsSection() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
+  const isClientProject = project.tag === "Client project";
+
   return (
     <TiltCard className="proj-card" intensity={12} scale={1.04}>
       <a
@@ -108,13 +133,15 @@ function ProjectCard({ project }: { project: Project }) {
         className="group relative flex flex-col rounded-2xl overflow-hidden glass border border-white/[0.07] shadow-card hover:border-star/30 transition-all duration-300 h-full cursor-pointer"
       >
         {/* Mockup preview area */}
-        <div className={`relative h-48 bg-gradient-to-br ${project.gradient} overflow-hidden flex-shrink-0`}>
-          {/* Browser bar simulation */}
+        <div
+          className={`relative h-48 bg-gradient-to-br ${project.gradient} overflow-hidden flex-shrink-0`}
+        >
+          {/* Browser bar */}
           <div className="absolute top-0 left-0 right-0 h-7 bg-black/30 backdrop-blur-sm flex items-center gap-1.5 px-3">
             <span className="w-2 h-2 rounded-full bg-white/20" />
             <span className="w-2 h-2 rounded-full bg-white/20" />
             <span className="w-2 h-2 rounded-full bg-white/20" />
-            <div className="ml-3 flex-1 h-3 rounded bg-white/[0.06] max-w-40 truncate flex items-center px-2">
+            <div className="ml-3 flex-1 h-3 rounded bg-white/[0.06] max-w-40 flex items-center px-2">
               <span className="text-[9px] text-white/40 font-mono truncate">
                 {project.url.replace("https://", "")}
               </span>
@@ -137,12 +164,12 @@ function ProjectCard({ project }: { project: Project }) {
             </div>
           </div>
 
-          {/* Emoji accent */}
+          {/* Emoji */}
           <div className="absolute bottom-3 right-4 text-3xl opacity-80">
             {project.emoji}
           </div>
 
-          {/* Visit overlay on hover */}
+          {/* Hover overlay */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
             <span className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 px-4 py-2 rounded-full bg-star text-void text-xs font-display font-semibold flex items-center gap-1.5 shadow-glow-star">
               Visit live site
@@ -154,11 +181,22 @@ function ProjectCard({ project }: { project: Project }) {
         {/* Content */}
         <div className="flex flex-col flex-1 p-5">
           <div className="flex items-center justify-between mb-3">
-            <span className="inline-block text-[10px] font-body font-medium text-muted uppercase tracking-widest">
-              {project.tag}
-            </span>
+            <div className="flex items-center gap-2">
+              <span
+                className={`inline-block text-[10px] font-body font-medium uppercase tracking-widest ${
+                  isClientProject ? "text-aurora" : "text-[#f59e0b]"
+                }`}
+              >
+                {project.tag}
+              </span>
+              <span className="text-faint text-[10px]">·</span>
+              <span className="text-[10px] font-body text-faint uppercase tracking-widest">
+                {project.label}
+              </span>
+            </div>
             <ArrowUpRightIcon className="text-faint group-hover:text-star transition-colors duration-300" />
           </div>
+
           <h3 className="font-display font-semibold text-moon text-base leading-snug mb-2 group-hover:text-star transition-colors duration-300">
             {project.title}
           </h3>
@@ -178,8 +216,12 @@ function ArrowUpRightIcon({ className = "" }: { className?: string }) {
   return (
     <svg
       className={`flex-shrink-0 ${className}`}
-      width="13" height="13" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" strokeWidth={2.5}
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
     >
       <path d="M7 17L17 7M7 7h10v10" />
     </svg>
