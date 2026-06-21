@@ -17,6 +17,7 @@ const services = [
   { label: "Single-Page Website (₹3,500)",    href: "#services" },
   { label: "WhatsApp Integration (₹5,000)",   href: "#services" },
   { label: "Full Launch Package (₹7,000)",    href: "#services" },
+  { label: "Multi-Page Website (₹15,000)",    href: "#services" },
 ];
 
 function scrollTo(href: string) {

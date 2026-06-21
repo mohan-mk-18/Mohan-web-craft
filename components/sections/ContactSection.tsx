@@ -51,12 +51,7 @@ export default function ContactSection() {
     if (!formState.name || !formState.email || !formState.message) return;
     setSending(true);
     // ── Wire up your preferred form service here (e.g. Formspree, EmailJS) ──
-    const res = await fetch("https://formspree.io/f/xqevzzqq", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(formState),
-});
-if (!res.ok) throw new Error("Failed");
+    await new Promise((r) => setTimeout(r, 1000));
     setSending(false);
     setSubmitted(true);
     setFormState({ name: "", email: "", message: "" });
@@ -110,7 +105,7 @@ if (!res.ok) throw new Error("Failed");
                   Chat on WhatsApp
                 </p>
                 <p className="text-sm font-body text-muted">
-                  +91 XXXXX XXXXX · Usually replies in 2 hrs
+                  +91 9514870795 · Usually replies in 2 hrs
                 </p>
               </div>
               <ArrowRightIcon />

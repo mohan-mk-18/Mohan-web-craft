@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Mohan's WebCraft | Fast, Affordable Single-Page Websites",
   description:
-    "Freelance web developer from Salem, Tamil Nadu. I build clean, fast single-page websites for small businesses in 72 hours. Starter pricing. AI-assisted delivery.",
+    "I build clean, fast websites for small businesses — from single-page sites to full multi-page builds. Starting at ₹3,500.",
   keywords: [
     "freelance web developer Salem",
     "affordable website Tamil Nadu",
