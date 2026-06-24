@@ -30,8 +30,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-        <ServicesSection />
         <ProjectsSection />
+        <ServicesSection />
         <ProcessSection />
         <TestimonialsSection />
         <ContactSection />

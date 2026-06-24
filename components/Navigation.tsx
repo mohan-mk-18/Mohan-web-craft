@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { label: "About",    href: "#about"    },
-  { label: "Services", href: "#services" },
   { label: "Work",     href: "#projects" },
+  { label: "Services", href: "#services" },
   { label: "Process",  href: "#process"  },
   { label: "Contact",  href: "#contact"  },
 ];
 
-const WA_LINK = "https://wa.me/919514870795?text=Hi%20Mohan%2C%20I%20need%20a%20website";
+const WA_LINK = "https://wa.me/?text=Hi%20Mohan%2C%20I%20need%20a%20website";
 
 export default function Navigation() {
   const [scrolled,     setScrolled]     = useState(false);
@@ -28,7 +28,7 @@ export default function Navigation() {
 
   /* Active section tracking */
   useEffect(() => {
-    const ids = ["hero", "about", "services", "projects", "process", "contact"];
+    const ids = ["hero", "about", "projects", "services", "process", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
