@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { label: "Contact",  href: "#contact"  },
 ];
 
-const WA_LINK = "https://wa.me/?text=Hi%20Mohan%2C%20I%20need%20a%20website";
+const WA_LINK = "https://wa.me/919514870795?text=Hi%20Mohan%2C%20I%20need%20a%20website";
 
 export default function Navigation() {
   const [scrolled,     setScrolled]     = useState(false);
