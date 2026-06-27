@@ -20,7 +20,7 @@ const projects: Project[] = [
   {
     title:   "The GOAT Restaurant",
     context:
-      "A premium fine-dining restaurant in Chennai needed a website that matched its luxury positioning — Michelin-style cuisine, cinematic ambience, and a 4.9-star reputation across 2,500+ reviews.",
+      "A restaurant website project built to showcase modern layout, clear navigation, and a polished business presentation.",
     result:
       "Built a cinematic multi-section site with table reservations, a full interactive menu, signature dish showcases, and award/recognition highlights — designed to feel as premium as the dining experience itself.",
     gradient: "from-[#2a1408] via-[#1a0f08] to-[#0a0a0a]",
@@ -32,7 +32,7 @@ const projects: Project[] = [
   {
     title:   "Tea Brown Cafe",
     context:
-      "Salem's own tea destination needed an online presence to drive WhatsApp orders — from ₹15 masala tea to filter coffee and milkshakes — and showcase its cosy, affordable cafe vibe.",
+      "A self-initiated café website concept focused on clean design, mobile responsiveness, and an inviting user experience.",
     result:
       "Delivered a warm, inviting multi-page site with a live menu, weekly bestsellers, customer reviews, and one-tap WhatsApp ordering on every dish — built to convert browsers into walk-ins.",
     gradient: "from-[#2a1b0a] via-[#1f1410] to-[#0a0a0a]",
