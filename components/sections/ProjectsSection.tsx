@@ -9,6 +9,7 @@ interface Project {
   title:    string;
   context:  string;
   result:   string;
+  note?:    string;
   gradient: string;
   emoji:    string;
   tag:      string;
@@ -23,6 +24,8 @@ const projects: Project[] = [
       "A restaurant website project built to showcase modern layout, clear navigation, and a polished business presentation.",
     result:
       "Built a cinematic multi-section site with table reservations, a full interactive menu, signature dish showcases, and award/recognition highlights — designed to feel as premium as the dining experience itself.",
+    note:
+      'Note: This project is currently optimized for desktop screens. For the best experience on mobile, please enable "Desktop site" in your browser.',
     gradient: "from-[#2a1408] via-[#1a0f08] to-[#0a0a0a]",
     emoji:    "🍽️",
     tag:      "Self projects",
@@ -35,6 +38,8 @@ const projects: Project[] = [
       "A self-initiated café website concept focused on clean design, mobile responsiveness, and an inviting user experience.",
     result:
       "Delivered a warm, inviting multi-page site with a live menu, weekly bestsellers, customer reviews, and one-tap WhatsApp ordering on every dish — built to convert browsers into walk-ins.",
+    note:
+      'Note: This project is currently optimized for desktop screens. For the best experience on mobile, please enable "Desktop site" in your browser.',
     gradient: "from-[#2a1b0a] via-[#1f1410] to-[#0a0a0a]",
     emoji:    "🍵",
     tag:      "Self projects",
@@ -206,6 +211,11 @@ function ProjectCard({ project }: { project: Project }) {
           <p className="text-xs font-body text-aurora/80 border-t border-white/[0.06] pt-3 leading-relaxed">
             {project.result}
           </p>
+          {project.note ? (
+            <p className="mt-2 text-[11px] font-body text-faint/80 italic leading-relaxed">
+              {project.note}
+            </p>
+          ) : null}
         </div>
       </a>
     </TiltCard>
