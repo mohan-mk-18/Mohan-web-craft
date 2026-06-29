@@ -204,7 +204,7 @@ export default function IntroScreen({ onComplete }: Props) {
           <motion.button
             initial={{ opacity:0 }} animate={{ opacity:1 }} transition={{ delay:0.8 }}
             onClick={doExit}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-display font-medium text-muted border border-white/10 hover:border-white/25 hover:text-silver transition-all z-10"
+            className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-display font-medium text-muted border border-white/10 hover:border-white/25 hover:text-silver transition-all z-10"
             style={{ background:"rgba(255,255,255,0.03)", backdropFilter:"blur(10px)" }}
           >
             Skip
