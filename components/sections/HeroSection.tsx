@@ -18,73 +18,56 @@ export default function HeroSection() {
 
   useEffect(() => {
     if (!sectionRef.current) return;
-
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.3, defaults: { ease: "power3.out" } });
-
-      tl.from(".hero-tag", {
-        opacity: 0, y: 16, duration: 0.6,
-      })
-        .from(".hero-word", {
-          opacity: 0, y: 70, stagger: 0.06, duration: 0.85,
-        }, "-=0.2")
-        .from(".hero-sub", {
-          opacity: 0, y: 20, duration: 0.65,
-        }, "-=0.45")
-        .from(".hero-cta", {
-          opacity: 0, y: 18, stagger: 0.1, duration: 0.55,
-        }, "-=0.4")
-        .from(".hero-card", {
-          opacity: 0, x: 45, duration: 0.9, ease: "power2.out",
-        }, "-=0.6")
-        .from(".hero-scroll", {
-          opacity: 0, duration: 0.5,
-        }, "-=0.2");
+      tl.from(".hero-tag",  { opacity: 0, y: 16, duration: 0.6 })
+        .from(".hero-word", { opacity: 0, y: 70, stagger: 0.06, duration: 0.85 }, "-=0.2")
+        .from(".hero-sub",  { opacity: 0, y: 20, duration: 0.65 }, "-=0.45")
+        .from(".hero-cta",  { opacity: 0, y: 18, stagger: 0.1, duration: 0.55 }, "-=0.4")
+        .from(".hero-card", { opacity: 0, x: 45, duration: 0.9, ease: "power2.out" }, "-=0.6")
+        .from(".hero-scroll",{ opacity: 0, duration: 0.5 }, "-=0.2");
     }, sectionRef);
-
     return () => ctx.revert();
   }, []);
 
   const headline = ["Your website,", "live in 72 hours."];
 
   return (
-    <section
-      id="hero"
-      ref={sectionRef}
+    <section id="hero" ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Ambient background glows */}
+      {/* Ambient glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-violet/[0.06] blur-[120px]" />
-        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-star/[0.07] blur-[100px]" />
-        <div className="absolute bottom-1/4 left-1/2 w-[300px] h-[300px] rounded-full bg-aurora/[0.05] blur-[90px]" />
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-violet/[0.06] blur-[120px]" />
+        <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full bg-star/[0.07] blur-[100px]" />
+        <div className="absolute bottom-1/4 left-1/2 w-[250px] h-[250px] rounded-full bg-aurora/[0.05] blur-[90px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-16 lg:pt-40 lg:pb-20">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16 lg:pt-40 lg:pb-20 w-full">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-16">
 
           {/* Left — copy */}
-          <div className="max-w-2xl">
+          <div className="max-w-2xl w-full">
 
-            {/* Eyebrow tag */}
-            <div className="hero-tag inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-star/20 mb-8">
+            {/* Eyebrow */}
+            <div className="hero-tag inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-star/20 mb-6 sm:mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-aurora animate-pulseGlow" />
-              <span className="text-xs font-body font-medium text-muted tracking-widest uppercase">
+              <span className="text-[10px] sm:text-xs font-body font-medium text-muted tracking-widest uppercase">
                 Freelance web developer · Salem, India
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="font-display font-semibold leading-[1.1] mb-6">
+            <h1 className="font-display font-semibold leading-[1.1] mb-5 sm:mb-6">
               {headline.map((line, li) => (
                 <div key={li} className="overflow-hidden">
                   {line.split(" ").map((word, wi) => (
                     <span
                       key={wi}
-                      className={`hero-word inline-block mr-[0.3em] ${
+                      className={`hero-word inline-block mr-[0.25em] ${
                         li === 1
-                          ? "text-gradient-star text-5xl sm:text-6xl lg:text-7xl"
-                          : "text-moon text-5xl sm:text-6xl lg:text-7xl"
+                          ? "text-gradient-star text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+                          : "text-moon   text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
                       }`}
                     >
                       {word}
@@ -95,30 +78,26 @@ export default function HeroSection() {
             </h1>
 
             {/* Subheadline */}
-            <p className="hero-sub font-body text-muted text-lg sm:text-xl leading-relaxed mb-10 max-w-xl">
+            <p className="hero-sub font-body text-muted text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-xl">
               AI-assisted design. Clean code. Single-page sites built fast
               for small businesses across India —{" "}
               <span className="text-silver font-medium">starting at ₹3,500</span>.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4">
               <a
                 href={WA_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hero-cta flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-star text-void font-display font-semibold text-sm hover:bg-[#7bc4ff] transition-all duration-300 shadow-glow-star hover:shadow-[0_0_50px_rgba(90,169,255,0.4)]"
+                className="hero-cta flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-full bg-star text-void font-display font-semibold text-sm hover:bg-[#7bc4ff] transition-all duration-300 shadow-glow-star"
               >
                 <WhatsAppIcon />
                 Start on WhatsApp
               </a>
               <button
-                onClick={() => {
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="hero-cta flex items-center gap-2 px-7 py-3.5 rounded-full glass border border-white/10 text-silver font-display font-medium text-sm hover:border-white/20 hover:text-moon transition-all duration-300"
+                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                className="hero-cta flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full glass border border-white/10 text-silver font-display font-medium text-sm hover:border-white/20 hover:text-moon transition-all duration-300"
               >
                 View my work
                 <ArrowDownIcon />
@@ -126,55 +105,46 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right — floating stats card */}
-          <div className="hero-card lg:flex-shrink-0 w-full lg:w-auto max-w-sm lg:max-w-none">
+          {/* Right — stats card */}
+          <div className="hero-card w-full lg:w-auto lg:flex-shrink-0 max-w-xs mx-auto lg:mx-0">
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-              className="relative glass border-glow-star rounded-2xl p-6 lg:w-64"
+              className="relative glass border-glow-star rounded-2xl p-5 sm:p-6 lg:w-60"
             >
-              {/* Glow aura */}
               <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-star/10 via-transparent to-violet/10 pointer-events-none" />
 
-              <p className="text-xs font-body text-muted mb-4 uppercase tracking-widest">
+              <p className="text-[10px] font-body text-muted mb-4 uppercase tracking-widest">
                 Current availability
               </p>
-
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-5">
                 <span className="w-2 h-2 rounded-full bg-aurora animate-pulseGlow shadow-[0_0_8px_#22d3ee]" />
                 <span className="font-display font-semibold text-moon text-sm">
                   Open for new projects
                 </span>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {stats.map(({ value, label }) => (
-                  <div
-                    key={label}
+                  <div key={label}
                     className="flex items-center justify-between py-2 border-b border-white/[0.05] last:border-0"
                   >
                     <span className="text-muted text-xs font-body">{label}</span>
-                    <span className="font-display font-semibold text-moon text-sm">
-                      {value}
-                    </span>
+                    <span className="font-display font-semibold text-moon text-sm">{value}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-5 pt-4 border-t border-white/[0.05]">
-                <p className="text-xs text-muted font-body text-center">
-                  First 5 clients · Starter pricing
-                </p>
+              <div className="mt-4 pt-4 border-t border-white/[0.05]">
+                <p className="text-xs text-muted font-body text-center">First 5 clients · Starter pricing</p>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="hero-scroll absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
-          <span className="text-[10px] font-body text-muted uppercase tracking-widest">
-            Scroll
-          </span>
+        {/* Scroll indicator — hidden on very small screens */}
+        <div className="hero-scroll hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 opacity-50">
+          <span className="text-[10px] font-body text-muted uppercase tracking-widest">Scroll</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
@@ -193,7 +163,6 @@ function WhatsAppIcon() {
     </svg>
   );
 }
-
 function ArrowDownIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
